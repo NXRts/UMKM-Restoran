@@ -1,0 +1,16 @@
+{
+  "headers": {
+    "x-nextjs-stale-time": "300",
+    "x-nextjs-prerender": "1",
+    "x-next-cache-tags": "_N_T_/layout,_N_T_/kasir/layout,_N_T_/kasir/settings/layout,_N_T_/kasir/settings/page,_N_T_/kasir/settings"
+  },
+  "segmentPaths": [
+    "/_tree",
+    "/_full",
+    "/kasir/settings/__PAGE__",
+    "/kasir/settings",
+    "/kasir",
+    "/_index",
+    "/_head"
+  ]
+}
