@@ -1,0 +1,9 @@
+{
+  "/_global-error/page": "/_global-error",
+  "/_not-found/page": "/_not-found",
+  "/favicon.ico/route": "/favicon.ico",
+  "/kasir/menu/page": "/kasir/menu",
+  "/kasir/page": "/kasir",
+  "/kasir/settings/page": "/kasir/settings",
+  "/page": "/"
+}
