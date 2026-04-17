@@ -38,11 +38,11 @@ export function MenuCard({ item, isAdmin = false, onAddToCart, onEdit, onDelete 
         )}
       </div>
       
-      <div className="p-4 flex flex-col flex-grow">
+      <div className="p-4 flex flex-col grow">
         <div className="flex justify-between items-start mb-1">
           <h3 className="font-semibold text-slate-800 text-lg leading-tight">{item.name}</h3>
         </div>
-        <p className="text-sm text-slate-500 mb-4 line-clamp-2 flex-grow">{item.description}</p>
+        <p className="text-sm text-slate-500 mb-4 line-clamp-2 grow">{item.description}</p>
         
         <div className="flex items-center justify-between mt-auto">
           <span className="font-bold text-orange-600 text-lg">

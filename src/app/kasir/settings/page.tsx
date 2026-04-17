@@ -56,7 +56,7 @@ export default function SettingsPage() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         {/* Profile & Security */}
         <section className="space-y-6">
-          <div className="bg-white p-8 rounded-[2rem] border border-slate-100 shadow-sm space-y-6">
+          <div className="bg-white p-8 rounded-4xl border border-slate-100 shadow-sm space-y-6">
             <div className="flex items-center gap-3 border-b border-slate-50 pb-4">
               <div className="p-2 bg-slate-900 text-white rounded-xl">
                 <LayoutGrid size={18} />
@@ -104,7 +104,7 @@ export default function SettingsPage() {
 
         {/* QR Code Sharing */}
         <section className="space-y-6">
-          <div className="bg-white p-8 rounded-[2rem] border border-orange-100 shadow-sm space-y-6 relative overflow-hidden">
+          <div className="bg-white p-8 rounded-4xl border border-orange-100 shadow-sm space-y-6 relative overflow-hidden">
             <div className="absolute top-0 right-0 w-32 h-32 bg-orange-50 rounded-full -mr-16 -mt-16" />
             
             <div className="flex items-center gap-3 border-b border-orange-50 pb-4 relative z-10">
@@ -151,11 +151,17 @@ export default function SettingsPage() {
                   Unduh PNG
                 </button>
                 <button
-                  onClick={() => toast.info("Segera hadir: Desain Poster Otomatis")}
-                  className="py-3.5 bg-orange-50 border border-orange-100 text-orange-600 rounded-xl font-bold text-sm hover:bg-orange-100 transition-all flex items-center justify-center gap-2"
+                  onClick={() => {
+                    if (confirm("Reset seluruh data menu ke pengaturan awal? Semua perubahan menu yang Anda buat akan hilang.")) {
+                      storage.resetMenu();
+                      toast.success("Data menu berhasil direset ke pengaturan awal.");
+                      window.location.reload();
+                    }
+                  }}
+                  className="py-3.5 bg-red-50 border border-red-100 text-red-600 rounded-xl font-bold text-sm hover:bg-red-100 transition-all flex items-center justify-center gap-2"
                 >
                   <RefreshCw size={16} />
-                  Refresh
+                  Reset Menu
                 </button>
               </div>
             </div>
