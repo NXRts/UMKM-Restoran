@@ -53,7 +53,7 @@ const DUMMY_MENU: MenuItem[] = [
     description: "Mie kuning basah dengan bumbu jawa yang khas, irisan kol dan tomat.",
     price: 30000,
     category: "Makanan",
-    imageUrl: "https://images.unsplash.com/photo-1612929633738-8fe01f7c8ec1?auto=format&fit=crop&q=80&w=600",
+    imageUrl: "https://images.unsplash.com/photo-1585032226651-759b368d7246?auto=format&fit=crop&q=80&w=600",
     available: true,
   },
   {
@@ -71,7 +71,7 @@ const DUMMY_MENU: MenuItem[] = [
     description: "Espresso dengan susu segar dan sirup gula aren asli pilihan.",
     price: 22000,
     category: "Minuman",
-    imageUrl: "https://images.unsplash.com/photo-1595853035070-59a39fe84da3?auto=format&fit=crop&q=80&w=600",
+    imageUrl: "https://images.unsplash.com/photo-1541167760496-162955ed8a9f?auto=format&fit=crop&q=80&w=600",
     available: true,
   },
   {
@@ -80,7 +80,7 @@ const DUMMY_MENU: MenuItem[] = [
     description: "Tempe goreng tepung setengah matang (5 pcs) + sambal kecap.",
     price: 15000,
     category: "Cemilan",
-    imageUrl: "https://images.unsplash.com/photo-1621217596005-24fd516baad7?auto=format&fit=crop&q=80&w=600",
+    imageUrl: "https://images.unsplash.com/photo-1635345750050-488972688b77?auto=format&fit=crop&q=80&w=600",
     available: true,
   }
 ];
@@ -120,7 +120,28 @@ export const storage = {
       setToStorage(STORAGE_KEYS.MENU, DUMMY_MENU);
       return DUMMY_MENU;
     }
-    return JSON.parse(items);
+    
+    // Auto-fix broken images for existing users
+    let parsedItems: MenuItem[] = JSON.parse(items);
+    let updated = false;
+    parsedItems = parsedItems.map(item => {
+      if (item.imageUrl.includes("photo-1612929633738-8fe01f7c8ec1")) {
+        updated = true;
+        return { ...item, imageUrl: "https://images.unsplash.com/photo-1585032226651-759b368d7246?auto=format&fit=crop&q=80&w=600" };
+      }
+      if (item.imageUrl.includes("photo-1595853035070-59a39fe84da3")) {
+        updated = true;
+        return { ...item, imageUrl: "https://images.unsplash.com/photo-1541167760496-162955ed8a9f?auto=format&fit=crop&q=80&w=600" };
+      }
+      if (item.imageUrl.includes("photo-1621217596005-24fd516baad7")) {
+        updated = true;
+        return { ...item, imageUrl: "https://images.unsplash.com/photo-1635345750050-488972688b77?auto=format&fit=crop&q=80&w=600" };
+      }
+      return item;
+    });
+
+    if (updated) setToStorage(STORAGE_KEYS.MENU, parsedItems);
+    return parsedItems;
   },
   saveMenuItem: (item: MenuItem): void => {
     const items = storage.getMenuItems();
@@ -136,6 +157,9 @@ export const storage = {
     let items = storage.getMenuItems();
     items = items.filter((i) => i.id !== id);
     setToStorage(STORAGE_KEYS.MENU, items);
+  },
+  resetMenu: (): void => {
+    setToStorage(STORAGE_KEYS.MENU, DUMMY_MENU);
   },
   
   // --- ORDERS ---

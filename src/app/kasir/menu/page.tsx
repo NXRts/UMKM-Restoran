@@ -109,13 +109,13 @@ export default function MenuManagement() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsModalOpen(false)}
-              className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-[100]"
+              className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-100"
             />
             <motion.div
               initial={{ scale: 0.9, opacity: 0, y: 20 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.9, opacity: 0, y: 20 }}
-              className="fixed inset-0 m-auto w-full max-w-xl h-fit max-h-[90vh] bg-white rounded-[2rem] z-[101] overflow-hidden shadow-2xl flex flex-col"
+              className="fixed inset-0 m-auto w-full max-w-xl h-fit max-h-[90vh] bg-white rounded-4xl z-101 overflow-hidden shadow-2xl flex flex-col"
             >
               <div className="px-8 py-6 border-b border-slate-100 flex justify-between items-center bg-slate-50/50">
                 <h3 className="text-xl font-black text-slate-800">

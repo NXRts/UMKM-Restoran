@@ -33,14 +33,14 @@ export function CartDrawer({ isOpen, onClose, items, total, onUpdateQuantity, on
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-[100]"
+            className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-100"
           />
           <motion.div
             initial={{ y: "100%" }}
             animate={{ y: 0 }}
             exit={{ y: "100%" }}
             transition={{ type: "spring", damping: 25, stiffness: 200 }}
-            className="fixed bottom-0 left-0 right-0 max-w-lg mx-auto bg-white rounded-t-3xl z-[101] flex flex-col h-[85vh] shadow-[0_-10px_40px_rgba(0,0,0,0.1)]"
+            className="fixed bottom-0 left-0 right-0 max-w-lg mx-auto bg-white rounded-t-3xl z-101 flex flex-col h-[85vh] shadow-[0_-10px_40px_rgba(0,0,0,0.1)]"
           >
             <div className="p-4 border-b flex justify-between items-center bg-slate-50/80 rounded-t-3xl backdrop-blur-md">
               <div className="flex items-center gap-2">

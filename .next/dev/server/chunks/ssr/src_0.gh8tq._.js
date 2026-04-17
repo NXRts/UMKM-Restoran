@@ -27,7 +27,7 @@ const DUMMY_MENU = [
         description: "Mie kuning basah dengan bumbu jawa yang khas, irisan kol dan tomat.",
         price: 30000,
         category: "Makanan",
-        imageUrl: "https://images.unsplash.com/photo-1612929633738-8fe01f7c8ec1?auto=format&fit=crop&q=80&w=600",
+        imageUrl: "https://images.unsplash.com/photo-1585032226651-759b368d7246?auto=format&fit=crop&q=80&w=600",
         available: true
     },
     {
@@ -45,7 +45,7 @@ const DUMMY_MENU = [
         description: "Espresso dengan susu segar dan sirup gula aren asli pilihan.",
         price: 22000,
         category: "Minuman",
-        imageUrl: "https://images.unsplash.com/photo-1595853035070-59a39fe84da3?auto=format&fit=crop&q=80&w=600",
+        imageUrl: "https://images.unsplash.com/photo-1541167760496-162955ed8a9f?auto=format&fit=crop&q=80&w=600",
         available: true
     },
     {
@@ -54,7 +54,7 @@ const DUMMY_MENU = [
         description: "Tempe goreng tepung setengah matang (5 pcs) + sambal kecap.",
         price: 15000,
         category: "Cemilan",
-        imageUrl: "https://images.unsplash.com/photo-1621217596005-24fd516baad7?auto=format&fit=crop&q=80&w=600",
+        imageUrl: "https://images.unsplash.com/photo-1635345750050-488972688b77?auto=format&fit=crop&q=80&w=600",
         available: true
     }
 ];
@@ -80,6 +80,9 @@ const storage = {
         //TURBOPACK unreachable
         ;
         const items = undefined;
+        // Auto-fix broken images for existing users
+        let parsedItems;
+        let updated;
     },
     saveMenuItem: (item)=>{
         const items = storage.getMenuItems();
@@ -95,6 +98,9 @@ const storage = {
         let items = storage.getMenuItems();
         items = items.filter((i)=>i.id !== id);
         setToStorage(STORAGE_KEYS.MENU, items);
+    },
+    resetMenu: ()=>{
+        setToStorage(STORAGE_KEYS.MENU, DUMMY_MENU);
     },
     // --- ORDERS ---
     getOrders: ()=>{
@@ -216,7 +222,7 @@ function MenuCard({ item, isAdmin = false, onAddToCart, onEdit, onDelete }) {
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "p-4 flex flex-col flex-grow",
+                className: "p-4 flex flex-col grow",
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "flex justify-between items-start mb-1",
@@ -234,7 +240,7 @@ function MenuCard({ item, isAdmin = false, onAddToCart, onEdit, onDelete }) {
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                        className: "text-sm text-slate-500 mb-4 line-clamp-2 flex-grow",
+                        className: "text-sm text-slate-500 mb-4 line-clamp-2 grow",
                         children: item.description
                     }, void 0, false, {
                         fileName: "[project]/src/components/ui/MenuCard.tsx",
@@ -372,7 +378,7 @@ function CartDrawer({ isOpen, onClose, items, total, onUpdateQuantity, onCheckou
                         opacity: 0
                     },
                     onClick: onClose,
-                    className: "fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-[100]"
+                    className: "fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-100"
                 }, void 0, false, {
                     fileName: "[project]/src/components/ui/CartDrawer.tsx",
                     lineNumber: 31,
@@ -393,7 +399,7 @@ function CartDrawer({ isOpen, onClose, items, total, onUpdateQuantity, onCheckou
                         damping: 25,
                         stiffness: 200
                     },
-                    className: "fixed bottom-0 left-0 right-0 max-w-lg mx-auto bg-white rounded-t-3xl z-[101] flex flex-col h-[85vh] shadow-[0_-10px_40px_rgba(0,0,0,0.1)]",
+                    className: "fixed bottom-0 left-0 right-0 max-w-lg mx-auto bg-white rounded-t-3xl z-101 flex flex-col h-[85vh] shadow-[0_-10px_40px_rgba(0,0,0,0.1)]",
                     children: [
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             className: "p-4 border-b flex justify-between items-center bg-slate-50/80 rounded-t-3xl backdrop-blur-md",
